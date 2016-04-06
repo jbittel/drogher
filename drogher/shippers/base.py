@@ -25,4 +25,4 @@ class Shipper(object):
 
     @property
     def valid_checksum(self):
-        return True
+        return False
