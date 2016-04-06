@@ -11,9 +11,9 @@ class Shipper(object):
 
     @property
     def is_valid(self):
-        if not self.matches_barcode or not self.valid_checksum:
-            return False
-        return True
+        if self.matches_barcode and self.valid_checksum:
+            return True
+        return False
 
     @property
     def matches_barcode(self):
