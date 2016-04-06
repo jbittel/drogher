@@ -6,7 +6,7 @@ from drogher.exceptions import InvalidBarcode
 
 class TestDrogher:
     def test_barcode(self):
-        shipper = drogher.barcode('1Z9999999999999999')
+        shipper = drogher.barcode('1Z999AA10123456784')
         assert shipper.shipper == 'UPS'
 
     def test_invalid_barcode(self):

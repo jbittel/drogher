@@ -84,26 +84,26 @@ class TestFedExGround:
 
 class TestUPS:
     def test_barcode(self):
-        ups = shippers.UPS('1Z9999999999999999')
-        assert ups.barcode == '1Z9999999999999999'
+        ups = shippers.UPS('1Z999AA10123456784')
+        assert ups.barcode == '1Z999AA10123456784'
 
     def test_tracking_number(self):
-        ups = shippers.UPS('1Z9999999999999999')
-        assert ups.tracking_number == '1Z9999999999999999'
+        ups = shippers.UPS('1Z999AA10123456784')
+        assert ups.tracking_number == '1Z999AA10123456784'
 
     def test_shipper(self):
-        ups = shippers.UPS('1Z9999999999999999')
+        ups = shippers.UPS('1Z999AA10123456784')
         assert ups.shipper == 'UPS'
 
     def test_is_valid(self):
-        ups = shippers.UPS('1Z9999999999999999')
+        ups = shippers.UPS('1Z999AA10123456784')
         assert ups.is_valid == True
 
     def test_matches_barcode(self):
-        ups = shippers.UPS('1Z9999999999999999')
+        ups = shippers.UPS('1Z999AA10123456784')
         assert ups.matches_barcode == True
 
     def test_not_matches_barcode(self):
         # Begins with '1A' instead of '1Z'
-        ups = shippers.UPS('1A9999999999999999')
+        ups = shippers.UPS('1A999AA10123456784')
         assert ups.matches_barcode == False

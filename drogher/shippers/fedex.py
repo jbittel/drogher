@@ -31,7 +31,7 @@ class FedExGround(FedEx):
     @property
     def valid_checksum(self):
         sequence, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
-        total = odd = even = 0
+        odd = even = 0
         for i, c in enumerate(reversed(sequence)):
             if i & 0x1:
                 odd += int(c)
