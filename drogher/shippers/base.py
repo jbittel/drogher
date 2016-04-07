@@ -9,6 +9,9 @@ class Shipper(object):
     def __init__(self, barcode):
         self.barcode = barcode
 
+    def __repr__(self):
+        return "%s('%s')" % ('shippers.' + self.__class__.__name__, self.barcode)
+
     @property
     def is_valid(self):
         if self.matches_barcode and self.valid_checksum:
