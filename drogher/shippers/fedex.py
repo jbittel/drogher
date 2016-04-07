@@ -21,7 +21,7 @@ class FedExExpress(FedEx):
         return total % 11 % 10 == int(check_digit)
 
 
-class FedExGround(FedEx):
+class FedExGround96(FedEx):
     barcode_pattern = r'^96\d{20}$'
 
     @property

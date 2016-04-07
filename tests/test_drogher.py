@@ -10,7 +10,7 @@ class TestDrogher:
         shipper = drogher.barcode('9632001960000000000400152152152158')
         assert shipper.shipper == 'FedEx'
 
-    def test_fedex_ground_barcode(self):
+    def test_fedex_ground96_barcode(self):
         shipper = drogher.barcode('9611019012345612345671')
         assert shipper.shipper == 'FedEx'
 

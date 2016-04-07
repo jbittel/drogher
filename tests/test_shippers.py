@@ -55,30 +55,30 @@ class TestFedExExpress:
         assert fedex.matches_barcode == False
 
 
-class TestFedExGround:
+class TestFedExGround96:
     def test_barcode(self):
-        fedex = shippers.FedExGround('9611019012345612345671')
+        fedex = shippers.FedExGround96('9611019012345612345671')
         assert fedex.barcode == '9611019012345612345671'
 
     def test_tracking_number(self):
-        fedex = shippers.FedExGround('9611019012345612345671')
+        fedex = shippers.FedExGround96('9611019012345612345671')
         assert fedex.tracking_number == '012345612345671'
 
     def test_shipper(self):
-        fedex = shippers.FedExGround('9611019012345612345671')
+        fedex = shippers.FedExGround96('9611019012345612345671')
         assert fedex.shipper == 'FedEx'
 
     def test_is_valid(self):
-        fedex = shippers.FedExGround('9611019012345612345671')
+        fedex = shippers.FedExGround96('9611019012345612345671')
         assert fedex.is_valid == True
 
     def test_matches_barcode(self):
-        fedex = shippers.FedExGround('9611019012345612345671')
+        fedex = shippers.FedExGround96('9611019012345612345671')
         assert fedex.matches_barcode == True
 
     def test_not_matches_barcode(self):
         # Begins with '69' instead of '96'
-        fedex = shippers.FedExGround('6911019012345612345671')
+        fedex = shippers.FedExGround96('6911019012345612345671')
         assert fedex.matches_barcode == False
 
 
