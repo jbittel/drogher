@@ -1,7 +1,4 @@
-import pytest
-
 import drogher
-from drogher.exceptions import InvalidBarcode
 
 
 class TestDrogher:
@@ -26,5 +23,5 @@ class TestDrogher:
         assert shipper.shipper == 'USPS'
 
     def test_invalid_barcode(self):
-        with pytest.raises(InvalidBarcode):
-            drogher.barcode('1234')
+        shipper = drogher.barcode('1234')
+        assert shipper.shipper == 'Unknown'

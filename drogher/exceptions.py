@@ -1,2 +1,0 @@
-class InvalidBarcode(Exception):
-    pass

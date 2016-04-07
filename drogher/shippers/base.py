@@ -4,7 +4,7 @@ import re
 class Shipper(object):
     barcode = None
     barcode_pattern = None
-    shipper = 'Unknown'
+    shipper = None
 
     def __init__(self, barcode):
         self.barcode = barcode
@@ -25,4 +25,12 @@ class Shipper(object):
 
     @property
     def valid_checksum(self):
+        return False
+
+
+class Unknown(Shipper):
+    shipper = 'Unknown'
+
+    @property
+    def matches_barcode(self):
         return False

@@ -134,3 +134,25 @@ class TestUSPS:
         # Begins with '430' instead of '420'
         usps = shippers.USPS('430221539101026837331000039521')
         assert usps.matches_barcode == False
+
+
+class TestUnknown:
+    def test_barcode(self):
+        unknown = shippers.Unknown('ABCD')
+        assert unknown.barcode == 'ABCD'
+
+    def test_tracking_number(self):
+        unknown = shippers.Unknown('ABCD')
+        assert unknown.tracking_number == 'ABCD'
+
+    def test_shipper(self):
+        unknown = shippers.Unknown('ABCD')
+        assert unknown.shipper == 'Unknown'
+
+    def test_is_valid(self):
+        unknown = shippers.Unknown('ABCD')
+        assert unknown.is_valid == False
+
+    def test_matches_barcode(self):
+        unknown = shippers.Unknown('ABCD')
+        assert unknown.matches_barcode == False
