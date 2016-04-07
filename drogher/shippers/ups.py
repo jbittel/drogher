@@ -19,6 +19,7 @@ class UPS(Shipper):
                 odd += num
             else:
                 even += num
-        total = (odd * 2) + even
-        check = (total + (10 - total % 10)) - total
+        check = ((odd * 2) + even) % 10
+        if check != 0:
+            check = 10 - check
         return check == int(check_digit)

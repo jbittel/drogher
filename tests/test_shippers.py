@@ -99,6 +99,10 @@ class TestUPS:
         ups = shippers.UPS('1Z999AA10123456784')
         assert ups.is_valid == True
 
+    def test_valid_checksum_zero_checksum(self):
+        ups = shippers.UPS('1Z879E930346834440')
+        assert ups.valid_checksum == True
+
     def test_matches_barcode(self):
         ups = shippers.UPS('1Z999AA10123456784')
         assert ups.matches_barcode == True
@@ -122,9 +126,17 @@ class TestUSPSIMpb:
         usps = shippers.USPSIMpb('420221539101026837331000039521')
         assert usps.shipper == 'USPS'
 
+    def test_shipper_no_zip(self):
+        usps = shippers.USPSIMpb('9212391234567812345670')
+        assert usps.shipper == 'USPS'
+
     def test_is_valid(self):
         usps = shippers.USPSIMpb('420221539101026837331000039521')
         assert usps.is_valid == True
+
+    def test_valid_checksum_zero_checksum(self):
+        usps = shippers.USPSIMpb('9212391234567812345670')
+        assert usps.valid_checksum == True
 
     def test_matches_barcode(self):
         usps = shippers.USPSIMpb('420221539101026837331000039521')

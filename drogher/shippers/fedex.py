@@ -37,6 +37,7 @@ class FedExGround(FedEx):
                 odd += int(c)
             else:
                 even += int(c)
-        total = (even * 3) + odd
-        check = (total + (10 - total % 10)) - total
+        check = ((even * 3) + odd) % 10
+        if check != 0:
+            check = 10 - check
         return check == int(check_digit)
