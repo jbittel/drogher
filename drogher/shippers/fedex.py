@@ -1,3 +1,5 @@
+import itertools
+
 from .base import Shipper
 
 
@@ -16,7 +18,7 @@ class FedExExpress(FedEx):
     def valid_checksum(self):
         chars, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
         total = 0
-        for digit, char in zip([1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3], reversed(chars)):
+        for digit, char in zip(itertools.cycle([1, 3, 7]), reversed(chars)):
             total += int(char) * digit
         return total % 11 % 10 == int(check_digit)
 
