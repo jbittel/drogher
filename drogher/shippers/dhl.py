@@ -7,5 +7,5 @@ class DHL(Shipper):
 
     @property
     def valid_checksum(self):
-        sequence, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
-        return int(sequence) % 7 == int(check_digit)
+        chars, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
+        return int(chars) % 7 == int(check_digit)

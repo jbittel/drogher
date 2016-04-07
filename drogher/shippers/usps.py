@@ -16,13 +16,13 @@ class USPSIMpb(USPS):
 
     @property
     def valid_checksum(self):
-        sequence, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
+        chars, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
         odd = even = 0
-        for i, c in enumerate(reversed(sequence)):
+        for i, char in enumerate(reversed(chars)):
             if i & 0x1:
-                odd += int(c)
+                odd += int(char)
             else:
-                even += int(c)
+                even += int(char)
         check = ((even * 3) + odd) % 10
         if check != 0:
             check = 10 - check
@@ -34,10 +34,10 @@ class USPS13(USPS):
 
     @property
     def valid_checksum(self):
-        sequence, check_digit = self.tracking_number[2:10], self.tracking_number[10]
+        chars, check_digit = self.tracking_number[2:10], self.tracking_number[10]
         total = 0
-        for c, d in zip(sequence, [8, 6, 4, 2, 3, 5, 9, 7]):
-            total += int(c) * d
+        for digit, char in zip([8, 6, 4, 2, 3, 5, 9, 7], chars):
+            total += int(char) * digit
         remainder = total % 11
         if remainder == 0:
             check = 5

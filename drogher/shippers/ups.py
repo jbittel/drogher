@@ -7,13 +7,13 @@ class UPS(Shipper):
 
     @property
     def valid_checksum(self):
-        sequence, check_digit = self.tracking_number[2:-1], self.tracking_number[-1]
+        chars, check_digit = self.tracking_number[2:-1], self.tracking_number[-1]
         odd = even = 0
-        for i, c in enumerate(sequence):
+        for i, char in enumerate(chars):
             try:
-                num = int(c)
+                num = int(char)
             except ValueError:
-                num = (ord(c) - 3) % 10
+                num = (ord(char) - 3) % 10
 
             if i & 0x1:
                 odd += num

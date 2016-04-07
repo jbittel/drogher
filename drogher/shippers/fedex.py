@@ -14,10 +14,10 @@ class FedExExpress(FedEx):
 
     @property
     def valid_checksum(self):
-        sequence, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
+        chars, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
         total = 0
-        for c, d in zip(reversed(sequence), [1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3]):
-            total += int(c) * d
+        for digit, char in zip([1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3], reversed(chars)):
+            total += int(char) * digit
         return total % 11 % 10 == int(check_digit)
 
 
@@ -30,13 +30,13 @@ class FedExGround96(FedEx):
 
     @property
     def valid_checksum(self):
-        sequence, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
+        chars, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
         odd = even = 0
-        for i, c in enumerate(reversed(sequence)):
+        for i, char in enumerate(reversed(chars)):
             if i & 0x1:
-                odd += int(c)
+                odd += int(char)
             else:
-                even += int(c)
+                even += int(char)
         check = ((even * 3) + odd) % 10
         if check != 0:
             check = 10 - check
