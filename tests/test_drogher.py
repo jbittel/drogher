@@ -18,8 +18,12 @@ class TestDrogher:
         shipper = drogher.barcode('1Z999AA10123456784')
         assert shipper.shipper == 'UPS'
 
-    def test_usps_barcode(self):
+    def test_uspsimpb_barcode(self):
         shipper = drogher.barcode('420221539101026837331000039521')
+        assert shipper.shipper == 'USPS'
+
+    def test_usps13_barcode(self):
+        shipper = drogher.barcode('EF123456785US')
         assert shipper.shipper == 'USPS'
 
     def test_invalid_barcode(self):

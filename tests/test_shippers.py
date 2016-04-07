@@ -109,30 +109,57 @@ class TestUPS:
         assert ups.matches_barcode == False
 
 
-class TestUSPS:
+class TestUSPSIMpb:
     def test_barcode(self):
-        usps = shippers.USPS('420221539101026837331000039521')
+        usps = shippers.USPSIMpb('420221539101026837331000039521')
         assert usps.barcode == '420221539101026837331000039521'
 
     def test_tracking_number(self):
-        usps = shippers.USPS('420221539101026837331000039521')
+        usps = shippers.USPSIMpb('420221539101026837331000039521')
         assert usps.tracking_number == '9101026837331000039521'
 
     def test_shipper(self):
-        usps = shippers.USPS('420221539101026837331000039521')
+        usps = shippers.USPSIMpb('420221539101026837331000039521')
         assert usps.shipper == 'USPS'
 
     def test_is_valid(self):
-        usps = shippers.USPS('420221539101026837331000039521')
+        usps = shippers.USPSIMpb('420221539101026837331000039521')
         assert usps.is_valid == True
 
     def test_matches_barcode(self):
-        usps = shippers.USPS('420221539101026837331000039521')
+        usps = shippers.USPSIMpb('420221539101026837331000039521')
         assert usps.matches_barcode == True
 
     def test_not_matches_barcode(self):
         # Begins with '430' instead of '420'
-        usps = shippers.USPS('430221539101026837331000039521')
+        usps = shippers.USPSIMpb('430221539101026837331000039521')
+        assert usps.matches_barcode == False
+
+
+class TestUSPS13:
+    def test_barcode(self):
+        usps = shippers.USPS13('EF123456785US')
+        assert usps.barcode == 'EF123456785US'
+
+    def test_tracking_number(self):
+        usps = shippers.USPS13('EF123456785US')
+        assert usps.tracking_number == 'EF123456785US'
+
+    def test_shipper(self):
+        usps = shippers.USPS13('EF123456785US')
+        assert usps.shipper == 'USPS'
+
+    def test_is_valid(self):
+        usps = shippers.USPS13('EF123456785US')
+        assert usps.is_valid == True
+
+    def test_matches_barcode(self):
+        usps = shippers.USPS13('EF123456785US')
+        assert usps.matches_barcode == True
+
+    def test_not_matches_barcode(self):
+        # Only 8 digits instead of 9
+        usps = shippers.USPS13('EF12345678US')
         assert usps.matches_barcode == False
 
 
