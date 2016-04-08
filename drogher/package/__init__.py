@@ -1,5 +1,5 @@
-from .base import Unknown
-from .dhl import DHL
-from .fedex import FedExExpress, FedExGround96
-from .ups import UPS
-from .usps import USPSIMpb, USPS13
+from .base import Unknown  # noqa
+from .dhl import DHL  # noqa
+from .fedex import FedExExpress, FedExGround96  # noqa
+from .ups import UPS  # noqa
+from .usps import USPSIMpb, USPS13  # noqa
