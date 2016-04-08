@@ -1,9 +1,9 @@
 import itertools
 
-from .base import Shipper
+from .base import Package
 
 
-class FedEx(Shipper):
+class FedEx(Package):
     shipper = 'FedEx'
 
 

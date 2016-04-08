@@ -1,7 +1,7 @@
-from .base import Shipper
+from .base import Package
 
 
-class USPS(Shipper):
+class USPS(Package):
     shipper = 'USPS'
 
 

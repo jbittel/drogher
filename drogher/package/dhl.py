@@ -1,7 +1,7 @@
-from .base import Shipper
+from .base import Package
 
 
-class DHL(Shipper):
+class DHL(Package):
     barcode_pattern = r'^\d{10}$'
     shipper = 'DHL'
 

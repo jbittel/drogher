@@ -1,7 +1,7 @@
 import re
 
 
-class Shipper(object):
+class Package(object):
     barcode = None
     barcode_pattern = None
     shipper = None
@@ -10,7 +10,7 @@ class Shipper(object):
         self.barcode = barcode
 
     def __repr__(self):
-        return "%s('%s')" % ('shippers.' + self.__class__.__name__, self.barcode)
+        return "%s('%s')" % ('package.' + self.__class__.__name__, self.barcode)
 
     @property
     def is_valid(self):
@@ -31,7 +31,7 @@ class Shipper(object):
         return False
 
 
-class Unknown(Shipper):
+class Unknown(Package):
     shipper = 'Unknown'
 
     @property
