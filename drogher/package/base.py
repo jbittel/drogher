@@ -2,9 +2,9 @@ import re
 
 
 class Package(object):
-    barcode = None
-    barcode_pattern = None
-    shipper = None
+    barcode = ''
+    barcode_pattern = ''
+    shipper = ''
 
     def __init__(self, barcode):
         self.barcode = barcode
@@ -20,7 +20,9 @@ class Package(object):
 
     @property
     def matches_barcode(self):
-        return bool(re.match(self.barcode_pattern, self.barcode))
+        if self.barcode_pattern and self.barcode:
+            return bool(re.match(self.barcode_pattern, self.barcode))
+        return False
 
     @property
     def tracking_number(self):
@@ -33,7 +35,3 @@ class Package(object):
 
 class Unknown(Package):
     shipper = 'Unknown'
-
-    @property
-    def matches_barcode(self):
-        return False
