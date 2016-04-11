@@ -6,6 +6,10 @@ class TestDHL:
         dhl = package.DHL('1656740256')
         assert dhl.barcode == '1656740256'
 
+    def test_barcode_spaces(self):
+        dhl = package.DHL('165 674 025 6')
+        assert dhl.barcode == '1656740256'
+
     def test_tracking_number(self):
         dhl = package.DHL('1656740256')
         assert dhl.tracking_number == '1656740256'
@@ -31,6 +35,10 @@ class TestDHL:
 class TestFedExExpress:
     def test_barcode(self):
         fedex = package.FedExExpress('9632001960000000000400152152152158')
+        assert fedex.barcode == '9632001960000000000400152152152158'
+
+    def test_barcode_spaces(self):
+        fedex = package.FedExExpress('9632001 960000000000 400 152152152158')
         assert fedex.barcode == '9632001960000000000400152152152158'
 
     def test_tracking_number(self):
@@ -60,6 +68,10 @@ class TestFedExGround96:
         fedex = package.FedExGround96('9611019012345612345671')
         assert fedex.barcode == '9611019012345612345671'
 
+    def test_barcode_spaces(self):
+        fedex = package.FedExGround96('96110190 123456 123456 7 1')
+        assert fedex.barcode == '9611019012345612345671'
+
     def test_tracking_number(self):
         fedex = package.FedExGround96('9611019012345612345671')
         assert fedex.tracking_number == '012345612345671'
@@ -85,6 +97,10 @@ class TestFedExGround96:
 class TestUPS:
     def test_barcode(self):
         ups = package.UPS('1Z999AA10123456784')
+        assert ups.barcode == '1Z999AA10123456784'
+
+    def test_barcode_spaces(self):
+        ups = package.UPS('1Z 999 AA 10123456784')
         assert ups.barcode == '1Z999AA10123456784'
 
     def test_tracking_number(self):
@@ -116,6 +132,10 @@ class TestUPS:
 class TestUSPSIMpb:
     def test_barcode(self):
         usps = package.USPSIMpb('420221539101026837331000039521')
+        assert usps.barcode == '420221539101026837331000039521'
+
+    def test_barcode_spaces(self):
+        usps = package.USPSIMpb('420 22153 9101026837331000039521')
         assert usps.barcode == '420221539101026837331000039521'
 
     def test_tracking_number(self):
@@ -151,6 +171,10 @@ class TestUSPSIMpb:
 class TestUSPS13:
     def test_barcode(self):
         usps = package.USPS13('EF123456785US')
+        assert usps.barcode == 'EF123456785US'
+
+    def test_barcode_spaces(self):
+        usps = package.USPS13('EF 12345678 5 US')
         assert usps.barcode == 'EF123456785US'
 
     def test_tracking_number(self):

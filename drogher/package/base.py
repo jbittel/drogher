@@ -7,7 +7,7 @@ class Package(object):
     shipper = ''
 
     def __init__(self, barcode):
-        self.barcode = barcode
+        self.barcode = barcode.replace(' ', '')
 
     def __repr__(self):
         return "%s('%s')" % ('package.' + self.__class__.__name__, self.barcode)
