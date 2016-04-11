@@ -84,6 +84,10 @@ class TestFedExGround96:
         fedex = package.FedExGround96('9611019012345612345671')
         assert fedex.is_valid == True
 
+    def test_valid_checksum_zero_checksum(self):
+        fedex = package.FedExGround96('9611019012345612345640')
+        assert fedex.valid_checksum == True
+
     def test_matches_barcode(self):
         fedex = package.FedExGround96('9611019012345612345671')
         assert fedex.matches_barcode == True
@@ -227,3 +231,7 @@ class TestUnknown:
     def test_matches_barcode(self):
         unknown = package.Unknown('ABCD')
         assert unknown.matches_barcode == False
+
+    def test_valid_checksum(self):
+        unknown = package.Unknown('ABCD')
+        assert unknown.valid_checksum == False
