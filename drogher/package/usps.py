@@ -38,11 +38,9 @@ class USPS13(USPS):
         total = 0
         for digit, char in zip([8, 6, 4, 2, 3, 5, 9, 7], chars):
             total += int(char) * digit
-        remainder = total % 11
-        if remainder == 0:
-            check = 5
-        elif remainder == 1:
+        check = 11 - (total % 11)
+        if check == 10:
             check = 0
-        else:
-            check = 11 - remainder
+        elif check == 11:
+            check = 5
         return check == int(check_digit)

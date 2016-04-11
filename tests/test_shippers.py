@@ -189,6 +189,14 @@ class TestUSPS13:
         usps = package.USPS13('EF123456785US')
         assert usps.is_valid == True
 
+    def test_valid_checksum_remainder_10(self):
+        usps = package.USPS13('RZ030057180PH')
+        assert usps.valid_checksum == True
+
+    def test_valid_checksum_remainder_11(self):
+        usps = package.USPS13('VA456789015KG')
+        assert usps.valid_checksum == True
+
     def test_matches_barcode(self):
         usps = package.USPS13('EF123456785US')
         assert usps.matches_barcode == True
