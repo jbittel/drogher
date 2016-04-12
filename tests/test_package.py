@@ -172,42 +172,42 @@ class TestUSPSIMpb:
         assert usps.matches_barcode == False
 
 
-class TestUSPS13:
+class TestUSPSS10:
     def test_barcode(self):
-        usps = package.USPS13('EF123456785US')
+        usps = package.USPSS10('EF123456785US')
         assert usps.barcode == 'EF123456785US'
 
     def test_barcode_spaces(self):
-        usps = package.USPS13('EF 12345678 5 US')
+        usps = package.USPSS10('EF 12345678 5 US')
         assert usps.barcode == 'EF123456785US'
 
     def test_tracking_number(self):
-        usps = package.USPS13('EF123456785US')
+        usps = package.USPSS10('EF123456785US')
         assert usps.tracking_number == 'EF123456785US'
 
     def test_shipper(self):
-        usps = package.USPS13('EF123456785US')
+        usps = package.USPSS10('EF123456785US')
         assert usps.shipper == 'USPS'
 
     def test_is_valid(self):
-        usps = package.USPS13('EF123456785US')
+        usps = package.USPSS10('EF123456785US')
         assert usps.is_valid == True
 
     def test_valid_checksum_remainder_10(self):
-        usps = package.USPS13('RZ030057180PH')
+        usps = package.USPSS10('RZ030057180US')
         assert usps.valid_checksum == True
 
     def test_valid_checksum_remainder_11(self):
-        usps = package.USPS13('VA456789015KG')
+        usps = package.USPSS10('VA456789015US')
         assert usps.valid_checksum == True
 
     def test_matches_barcode(self):
-        usps = package.USPS13('EF123456785US')
+        usps = package.USPSS10('EF123456785US')
         assert usps.matches_barcode == True
 
     def test_not_matches_barcode(self):
         # Only 8 digits instead of 9
-        usps = package.USPS13('EF12345678US')
+        usps = package.USPSS10('EF12345678US')
         assert usps.matches_barcode == False
 
 

@@ -29,8 +29,8 @@ class USPSIMpb(USPS):
         return check == int(check_digit)
 
 
-class USPS13(USPS):
-    barcode_pattern = r'^[A-Z]{2}\d{9}[A-Z]{2}$'
+class USPSS10(USPS):
+    barcode_pattern = r'^[A-Z]{2}\d{9}US$'
 
     @property
     def valid_checksum(self):
