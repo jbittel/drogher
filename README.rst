@@ -4,7 +4,7 @@ drogher
 Identify shippers and valid tracking numbers from package barcodes.
 
 A package barcode string is tested against known shipper barcode types, matching the format and calculating
-checksum validity to identify the type provided. The module supports these barcode formats::
+checksum validity to identify the type provided. The module supports these barcode formats:
 
    * DHL
    * FedEx Express
