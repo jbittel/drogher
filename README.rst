@@ -1,10 +1,10 @@
-Drogher
+drogher
 =======
 
-A Python module for shipper package tracking barcode detection.
+Identify shippers and valid tracking numbers from package barcodes.
 
-A provided package barcode is tested against a list of known shipper 1D tracking barcodes, matching the format and
-verifying checksum validity to determine the barcode type. The module supports these barcode formats::
+A package barcode string is tested against known shipper barcode types, matching the format and calculating
+checksum validity to identify the type provided. The module supports these barcode formats::
 
    * DHL
    * FedEx Express
@@ -13,11 +13,9 @@ verifying checksum validity to determine the barcode type. The module supports t
    * USPS IMpb
    * USPS UPU S10
 
-   .. note::
-
-      For some shippers the package barcode is the same as the tracking number, while for others the tracking
-      number is a subset of the barcode. Inputting a tracking number instead of a barcode will work in some
-      cases but not others.
+**Note:** For some shippers the package barcode is the same as the tracking number, while for others the tracking
+number is a subset of the barcode. Inputting a tracking number instead of a barcode will work in some cases but
+not others.
 
 Usage
 -----
