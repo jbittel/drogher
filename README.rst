@@ -1,14 +1,23 @@
 Drogher
 =======
 
-A Python module implementing package tracking barcode detection and validation.
+A Python module for shipper package tracking barcode detection.
 
-A provided barcode is tested against a list of known shipper 1D tracking barcodes, matching both the format and
-checksum validity to correlate the barcode with a shipper.
+A provided package barcode is tested against a list of known shipper 1D tracking barcodes, matching the format and
+verifying checksum validity to determine the barcode type. The module supports these barcode formats::
 
-Note that for some shippers the package barcode is the same as the tracking number, while for others the tracking
-number is a subset of the barcode string. Inputting a tracking number instead of a barcode will work in some cases
-but not in others due to this difference.
+   * DHL
+   * FedEx Express
+   * FedEx Ground "96"
+   * UPS
+   * USPS IMpb
+   * USPS UPU S10
+
+   .. note::
+
+      For some shippers the package barcode is the same as the tracking number, while for others the tracking
+      number is a subset of the barcode. Inputting a tracking number instead of a barcode will work in some
+      cases but not others.
 
 Usage
 -----
@@ -17,7 +26,7 @@ Begin by importing the Drogher module::
 
    >>> import drogher
 
-Now, call the barcode function with a package barcode::
+Now, call the ``barcode`` function with a package barcode string::
 
    >>> package = drogher.barcode('1Z999AA10123456784')
 
@@ -36,7 +45,7 @@ calculated checksum matches the check digit::
    >>> package.is_valid
    True
 
-If a barcode cannot be matched with a shipper, the returned class will not validate::
+If a barcode cannot be matched with a shipper, the class does not validate and the shipper is unknown::
 
    >>> package = drogher.barcode('123456')
    >>> package.is_valid
