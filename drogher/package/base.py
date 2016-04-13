@@ -34,4 +34,4 @@ class Package(object):
 
 
 class Unknown(Package):
-    shipper = 'Unknown'
+    shipper = None

@@ -43,13 +43,13 @@ calculated checksum matches the check digit::
    >>> package.is_valid
    True
 
-If a barcode cannot be matched with a shipper, the class does not validate and the shipper is unknown::
+If a barcode cannot be matched with a shipper, the class does not validate and the shipper is ``None``::
 
    >>> package = drogher.barcode('123456')
    >>> package.is_valid
    False
    >>> package.shipper
-   'Unknown'
+   None
 
 For some shippers, the barcode is not the same as the tracking number::
 

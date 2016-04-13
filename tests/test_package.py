@@ -222,7 +222,7 @@ class TestUnknown:
 
     def test_shipper(self):
         unknown = package.Unknown('ABCD')
-        assert unknown.shipper == 'Unknown'
+        assert unknown.shipper == None
 
     def test_is_valid(self):
         unknown = package.Unknown('ABCD')
