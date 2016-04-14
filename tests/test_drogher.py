@@ -28,10 +28,10 @@ class TestDrogher:
 
     def test_invalid_barcode(self):
         package = drogher.barcode('1234')
-        assert package.shipper == None
+        assert package.shipper is None
 
     def test_barcode_classes(self):
         package = drogher.barcode('EF123456785US', barcode_classes=['DHL'])
-        assert package.shipper == None
+        assert package.shipper is None
         package = drogher.barcode('1656740256', barcode_classes=['DHL'])
         assert package.shipper == 'DHL'
