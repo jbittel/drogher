@@ -30,7 +30,7 @@ class USPSIMpb(USPS):
 
 
 class USPSS10(USPS):
-    barcode_pattern = r'^[A-Z]{2}\d{9}US$'
+    barcode_pattern = r'^[A-Z]{2}\d{9}[A-Z]{2}$'
 
     @property
     def valid_checksum(self):

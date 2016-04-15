@@ -194,11 +194,11 @@ class TestUSPSS10:
         assert usps.is_valid == True
 
     def test_valid_checksum_remainder_10(self):
-        usps = package.USPSS10('RZ030057180US')
+        usps = package.USPSS10('RZ030057180PH')
         assert usps.valid_checksum == True
 
     def test_valid_checksum_remainder_11(self):
-        usps = package.USPSS10('VA456789015US')
+        usps = package.USPSS10('VA456789015KG')
         assert usps.valid_checksum == True
 
     def test_matches_barcode(self):
