@@ -45,6 +45,10 @@ class TestFedExExpress:
         fedex = package.FedExExpress('9632001960000000000400152152152158')
         assert fedex.tracking_number == '152152152158'
 
+    def test_tracking_number_leading_zero(self):
+        fedex = package.FedExExpress('9632001960000000000400052152152158')
+        assert fedex.tracking_number == '052152152158'
+
     def test_shipper(self):
         fedex = package.FedExExpress('9632001960000000000400152152152158')
         assert fedex.shipper == 'FedEx'

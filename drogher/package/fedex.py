@@ -12,7 +12,7 @@ class FedExExpress(FedEx):
 
     @property
     def tracking_number(self):
-        return self.barcode[20:].lstrip('0')
+        return self.barcode[20:22].lstrip('0') + self.barcode[22:]
 
     @property
     def valid_checksum(self):
