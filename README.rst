@@ -9,6 +9,7 @@ checksum validity to identify the type provided. The module supports these barco
    * DHL
    * FedEx Express
    * FedEx Ground "96"
+   * OnTrac
    * UPS
    * USPS IMpb
    * USPS UPU S10

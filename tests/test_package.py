@@ -102,6 +102,41 @@ class TestFedExGround96:
         assert fedex.matches_barcode == False
 
 
+class TestOnTrac:
+    def test_barcode(self):
+        ontrac = package.OnTrac('C11235523929147')
+        assert ontrac.barcode == 'C11235523929147'
+
+    def test_barcode_spaces(self):
+        ontrac = package.OnTrac('C11235523929147')
+        assert ontrac.barcode == 'C11235523929147'
+
+    def test_tracking_number(self):
+        ontrac = package.OnTrac('C11235523929147')
+        assert ontrac.tracking_number == 'C11235523929147'
+
+    def test_shipper(self):
+        ontrac = package.OnTrac('C11235523929147')
+        assert ontrac.shipper == 'OnTrac'
+
+    def test_is_valid(self):
+        ontrac = package.OnTrac('C11235523929147')
+        assert ontrac.is_valid == True
+
+    def test_valid_checksum_zero_checksum(self):
+        ontrac = package.OnTrac('C11235523929840')
+        assert ontrac.valid_checksum == True
+
+    def test_matches_barcode(self):
+        ontrac = package.OnTrac('C11235523929147')
+        assert ontrac.matches_barcode == True
+
+    def test_not_matches_barcode(self):
+        # Begins with 'V' instead of 'C'
+        ontrac = package.OnTrac('V11235523929147')
+        assert ontrac.matches_barcode == False
+
+
 class TestUPS:
     def test_barcode(self):
         ups = package.UPS('1Z999AA10123456784')
