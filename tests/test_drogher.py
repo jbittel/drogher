@@ -14,6 +14,10 @@ class TestDrogher:
         package = drogher.barcode('9611019012345612345671')
         assert package.shipper == 'FedEx'
 
+    def test_ontrac_barcode(self):
+        package = drogher.barcode('C10999911320231')
+        assert package.shipper == 'OnTrac'
+
     def test_ups_barcode(self):
         package = drogher.barcode('1Z999AA10123456784')
         assert package.shipper == 'UPS'
