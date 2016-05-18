@@ -1,11 +1,9 @@
 from . import package
 
 
-def barcode(b, barcode_classes=None):
-    if barcode_classes is None:
-        barcode_classes = ['DHL', 'FedExExpress', 'FedExGround96', 'OnTrac', 'UPS', 'USPSIMpb', 'USPSS10']
+def barcode(b, barcode_classes=package.barcode_classes):
     for klass in barcode_classes:
-        p = getattr(package, klass)(b)
-        if p.is_valid:
-            return p
+        pkg = getattr(package, klass)(b)
+        if pkg.is_valid:
+            return pkg
     return package.Unknown(b)
