@@ -2,7 +2,7 @@ from .base import Package
 
 
 class OnTrac(Package):
-    barcode_pattern = r'^C[0-9]{14}$'
+    barcode_pattern = r'^[A-Z][0-9]{14}$'
     shipper = 'OnTrac'
 
     @property

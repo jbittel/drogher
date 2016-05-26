@@ -108,7 +108,7 @@ class TestOnTrac:
         assert ontrac.barcode == 'C11235523929147'
 
     def test_barcode_spaces(self):
-        ontrac = package.OnTrac('C11235523929147')
+        ontrac = package.OnTrac('C 11235523929147')
         assert ontrac.barcode == 'C11235523929147'
 
     def test_tracking_number(self):
@@ -128,12 +128,12 @@ class TestOnTrac:
         assert ontrac.valid_checksum == True
 
     def test_matches_barcode(self):
-        ontrac = package.OnTrac('C11235523929147')
+        ontrac = package.OnTrac('D10010945303074')
         assert ontrac.matches_barcode == True
 
     def test_not_matches_barcode(self):
-        # Begins with 'V' instead of 'C'
-        ontrac = package.OnTrac('V11235523929147')
+        # Begins with '2' instead of 'C'
+        ontrac = package.OnTrac('211235523929147')
         assert ontrac.matches_barcode == False
 
 
