@@ -250,6 +250,37 @@ class TestUSPSS10:
         assert usps.matches_barcode == False
 
 
+class TestUSPS20:
+    def test_barcode(self):
+        usps = package.USPS20('71123456789123456787')
+        assert usps.barcode == '71123456789123456787'
+
+    def test_barcode_spaces(self):
+        usps = package.USPS20('7112 3456 7891 2345 6787')
+        assert usps.barcode == '71123456789123456787'
+
+    def test_tracking_number(self):
+        usps = package.USPS20('71123456789123456787')
+        assert usps.tracking_number == '71123456789123456787'
+
+    def test_shipper(self):
+        usps = package.USPS20('71123456789123456787')
+        assert usps.shipper == 'USPS'
+
+    def test_is_valid(self):
+        usps = package.USPS20('71123456789123456787')
+        assert usps.is_valid == True
+
+    def test_matches_barcode(self):
+        usps = package.USPS20('71123456789123456787')
+        assert usps.matches_barcode == True
+
+    def test_not_matches_barcode(self):
+        # Begins with '72'
+        usps = package.USPS20('72123456789123456787')
+        assert usps.matches_barcode == False
+
+
 class TestUnknown:
     def test_barcode(self):
         unknown = package.Unknown('ABCD')

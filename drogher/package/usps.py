@@ -44,3 +44,21 @@ class USPSS10(USPS):
         elif check == 11:
             check = 5
         return check == int(check_digit)
+
+
+class USPS20(USPS):
+    barcode_pattern = r'^(71|73|77|81)\d{18}$'
+
+    @property
+    def valid_checksum(self):
+        chars, check_digit = self.tracking_number[:-1], self.tracking_number[-1]
+        odd = even = 0
+        for i, char in enumerate(reversed(chars)):
+            if i & 0x1:
+                odd += int(char)
+            else:
+                even += int(char)
+        check = ((even * 3) + odd) % 10
+        if check != 0:
+            check = 10 - check
+        return check == int(check_digit)
