@@ -189,12 +189,16 @@ class TestUSPSIMpb:
         usps = package.USPSIMpb('420221539101026837331000039521')
         assert usps.shipper == 'USPS'
 
-    def test_shipper_no_zip(self):
+    def test_is_valid(self):
+        usps = package.USPSIMpb('420221539101026837331000039521')
+        assert usps.is_valid == True
+
+    def test_is_valid_no_zip(self):
         usps = package.USPSIMpb('9212391234567812345670')
         assert usps.shipper == 'USPS'
 
-    def test_is_valid(self):
-        usps = package.USPSIMpb('420221539101026837331000039521')
+    def test_is_valid_nine_digit_zip(self):
+        usps = package.USPSIMpb('4209731792009205592767756015842558')
         assert usps.is_valid == True
 
     def test_valid_checksum_zero_checksum(self):

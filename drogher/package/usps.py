@@ -1,3 +1,5 @@
+import re
+
 from .base import Package
 
 
@@ -6,13 +8,11 @@ class USPS(Package):
 
 
 class USPSIMpb(USPS):
-    barcode_pattern = r'^(420\d{5})?(9[1-5]\d{20,24})$'
+    barcode_pattern = r'^(?:420(?:\d{9}|\d{5}))?(9[1-5]\d{20,24})$'
 
     @property
     def tracking_number(self):
-        if self.barcode.startswith('420'):
-            return self.barcode[8:]
-        return self.barcode
+        return re.match(self.barcode_pattern, self.barcode).group(1)
 
     @property
     def valid_checksum(self):
