@@ -30,6 +30,10 @@ class TestDrogher:
         package = drogher.barcode('EF123456785US')
         assert package.shipper == 'USPS'
 
+    def test_usps20_barcode(self):
+        package = drogher.barcode('71123456789123456787')
+        assert package.shipper == 'USPS'
+
     def test_invalid_barcode(self):
         package = drogher.barcode('1234')
         assert package.shipper is None
