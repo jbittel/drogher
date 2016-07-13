@@ -13,6 +13,7 @@ checksum validity to identify the type provided. The module supports these barco
    * UPS
    * USPS IMpb
    * USPS UPU S10
+   * USPS 20
 
 **Note:** For some shippers the package barcode is the same as the tracking number, while for others the tracking
 number is a subset of the barcode. Inputting a tracking number instead of a barcode will work in some cases but
