@@ -9,7 +9,7 @@ with open('README.rst') as f:
 
 setup(
     name='drogher',
-    version='0.0.1',
+    version='0.0.2',
     description=('Identify shippers and valid tracking numbers from package barcodes'),
     long_description=readme,
     license='BSD',
