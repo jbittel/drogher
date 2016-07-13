@@ -62,3 +62,15 @@ For some shippers, the barcode is not the same as the tracking number::
    '9101026837331000039521'
    >>> package.shipper
    'USPS'
+
+Changelog
+---------
+
+Version 0.0.2
+
+   * Improved pattern match for USPS IMpb barcodes
+   * Added support for 20 character USPS barcodes
+
+Version 0.0.1
+
+   * Initial release
