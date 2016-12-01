@@ -10,7 +10,7 @@ class Package(object):
         self.barcode = barcode.replace(' ', '')
 
     def __repr__(self):
-        return "%s('%s')" % ('package.' + self.__class__.__name__, self.barcode)
+        return "package.%s('%s')" % (self.__class__.__name__, self.barcode)
 
     @property
     def is_valid(self):
